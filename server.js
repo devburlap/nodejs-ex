@@ -99,6 +99,14 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
+app.get("/client_token", function (req, res) {
+  gateway.clientToken.generate({}, function (err, response) {
+    var token = response.clientToken;
+    console.log("token: " + token);
+    res.send(token);
+  });
+});
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
