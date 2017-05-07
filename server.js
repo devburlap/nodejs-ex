@@ -3,8 +3,16 @@ var express = require('express'),
     fs      = require('fs'),
     app     = express(),
     eps     = require('ejs'),
-    morgan  = require('morgan');
-    
+    morgan  = require('morgan'),
+    braintree = require("braintree");
+
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "8kph55sxt8v6xs38",
+  publicKey: "s3vkt8m3vmrb5hqp",
+  privateKey: "d5d7ecb36ac634e660f2cef62531d432"
+});
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
